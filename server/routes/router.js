@@ -181,7 +181,7 @@ userRouter.get("/forgotpassword/:id/:token", async (req, res) => {
             res.status(401).json({ status: 401, error })
         }
     } catch (error) {
-
+res.status(401).json({status:401,error})
     }
 })
 
@@ -194,7 +194,7 @@ userRouter.post("/:id/:token", async (req, res) => {
     try {
         const validuser = await userdb.findOne({ _id: id, verifytoken: token });
 
-        const verifyToken = jwt.verify(token.SecretKey);
+        const verifyToken = jwt.verify(token,SecretKey);
 
         if (validuser && verifyToken._id) {
             const newpassword = await bcrypt.hash(password, 12);

@@ -23,7 +23,7 @@ const PasswordReset = () => {
         const data = await res.json()
         if (data.status === 201) {
             setEmail("")
-            setMessage("")
+            setMessage(true)
         } else {
             toast.error("Invalid User", {
                 position: "top-center"

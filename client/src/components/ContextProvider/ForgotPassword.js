@@ -46,7 +46,7 @@ const res = await fetch(`http://localhost:8989/${id}/${token}`,{
 
 const data = await res.json()
 
-if(data.status === 201){
+if(data.status == 201){
   setPassword("")
   setMessage(true)
 }else{
