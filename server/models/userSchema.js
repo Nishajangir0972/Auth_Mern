@@ -40,7 +40,10 @@ const userSchema = new mongoose.Schema({
                 required: true,
             }
         }
-    ]
+    ],
+    verifytoken:{
+        type:String,
+    }
 
 })
 
@@ -59,7 +62,7 @@ userSchema.pre("save" , async function(next){
 userSchema.methods.generateAuthtoken = async function(){
     try {
         let token12 = jwt.sign({_id:this._id} , SecretKey,{
-            expiresIn:"6d"
+            expiresIn:"1d"
         });
         this.tokens = this.tokens.concat({token: token12});
         await this.save();

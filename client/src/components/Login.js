@@ -58,6 +58,9 @@ const Login = () => {
                 history("/dash")
                 setInpvalue({ ...inpvalue, email: '', password: '' })
             }
+            else{
+                alert("PAssword is not match")
+            }
 
         }
 
